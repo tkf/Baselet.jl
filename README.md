@@ -1,6 +1,7 @@
 # Baselet: `Base` API optimized for tuples
 
 [![GitHub Actions](https://github.com/tkf/Baselet.jl/workflows/Run%20tests/badge.svg)](https://github.com/tkf/Baselet.jl/actions?query=workflow%3A%22Run+tests%22)
+[![Aqua QA](https://img.shields.io/badge/Aqua.jl-%F0%9F%8C%A2-aqua.svg)](https://github.com/tkf/Aqua.jl)
 
 ## API
 
