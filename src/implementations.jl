@@ -30,12 +30,21 @@ end
 @inline _flatten() = ()
 @inline _flatten(x::Tuple, xs::Tuple...) = (x..., _flatten(xs...)...)
 
+struct _InitialValue end
+
+struct BottomRF{T}
+    rf::T
+end
+
+@inline (op::BottomRF)(::_InitialValue, x) = Base.reduce_first(op.rf, x)
+@inline (op::BottomRF)(acc, x) = op.rf(acc, x)
+
 @inline accumulate(args...; kw...) = Base.accumulate(args...; kw...)
 
-@def accumulate(op, xs::Tuple{}) = ()
-@def function accumulate(op::F, xs::Tuple) where {F}
-    ys, = afoldl(((xs[1],), xs[1]), Base.tail(xs)...) do (ys, acc), x
-        acc = op(acc, x)
+@def function accumulate(op::F, xs::Tuple; init = _InitialValue()) where {F}
+    rf = BottomRF(op)
+    ys, = afoldl(((), init), xs...) do (ys, acc), x
+        acc = rf(acc, x)
         (ys..., acc), acc
     end
     return ys
