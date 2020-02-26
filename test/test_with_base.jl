@@ -6,15 +6,6 @@ using Test
 
 args_and_kwargs(args...; kwargs...) = args, (; kwargs...)
 
-macro test_str(x)
-    f, rest = split(x, "(", limit = 2)
-    input, comparison = rsplit(rest, ")", limit = 2)
-    comparison = strip(comparison)
-    ex = Meta.parse("DUMMY($input)")
-    ex.args[1] = args_and_kwargs
-    esc(:($x, ($(Symbol(f)), $ex..., $(Symbol(comparison)))))
-end
-
 ==ᶜ(x, y) = collect(x) == collect(y)
 
 # Dummy implementations
