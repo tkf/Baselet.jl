@@ -8,6 +8,8 @@ function getindex end
 function filter end
 function zip end
 function accumulate end
+function cumsum end
+function cumprod end
 function flatten end
 function foreach end
 function any end

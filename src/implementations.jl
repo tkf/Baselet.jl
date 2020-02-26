@@ -50,6 +50,12 @@ end
     return ys
 end
 
+@inline cumsum(args...; kw...) = Base.cumsum(args...; kw...)
+@def cumsum(xs::Tuple) = Specialized.accumulate(Base.add_sum, xs)
+
+@inline cumprod(args...; kw...) = Base.cumprod(args...; kw...)
+@def cumprod(xs::Tuple) = Specialized.accumulate(Base.mul_prod, xs)
+
 @inline foreach(f, xs, rest...) = Base.foreach(f, xs, rest...)
 
 # Not using `@def` so that `Specialized.foreach` is always defined via `foldl`.
