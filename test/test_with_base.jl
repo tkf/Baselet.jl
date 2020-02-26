@@ -9,13 +9,14 @@ args_and_kwargs(args...; kwargs...) = args, (; kwargs...)
 ==ᶜ(x, y) = collect(x) == collect(y)
 
 # Dummy implementations
-accumulate(op, xs::Tuple) = Tuple(Base.accumulate(op, collect(xs)))
+accumulate(op, xs::Tuple; kw...) = Tuple(Base.accumulate(op, collect(xs); kw...))
 
 raw_testdata_pure = """
 getindex((100, 200, 300, 400), 2:3) ==
 zip((11, 22, 33)) ==ᶜ
 zip((11, 22, 33), (111, 222, 333)) ==ᶜ
 accumulate(+, (11, 22, 33)) ===
+accumulate(+, (11, 22, 33); init=100) ===
 flatten(((11, 22), (33, 44, 55))) ==ᶜ
 any((false, false, false)) ===
 any((false, true, false)) ===
