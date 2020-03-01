@@ -30,6 +30,10 @@ end
 @inline _flatten() = ()
 @inline _flatten(x::Tuple, xs::Tuple...) = (x..., _flatten(xs...)...)
 
+@inline enumerate(itr) = Base.enumerate(itr)
+
+@def enumerate(xs::Tuple) = Specialized.zip(ntuple(identity, length(xs)), xs)
+
 struct _InitialValue end
 
 struct BottomRF{T}

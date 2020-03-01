@@ -23,9 +23,9 @@ The list of supported functions can be found by typing
 julia> using Baselet
 
 julia> Baselet.Specialized.
-accumulate   cumprod      findfirst    foreach      issubset     symdiff
-all          cumsum       findlast     getindex     maximum      union
-any          extrema      findmax      in           minimum      unique
-argmax       filter       findmin      intersect    setdiff      zip
-argmin       findall      flatten      isdisjoint   sort
+accumulate   cumprod      findall      flatten      isdisjoint   sort
+all          cumsum       findfirst    foreach      issubset     symdiff
+any          enumerate    findlast     getindex     maximum      union
+argmax       extrema      findmax      in           minimum      unique
+argmin       filter       findmin      intersect    setdiff      zip
 ```

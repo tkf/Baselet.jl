@@ -7,6 +7,7 @@ baremodule Specialized
 function getindex end
 function filter end
 function zip end
+function enumerate end
 function accumulate end
 function cumsum end
 function cumprod end

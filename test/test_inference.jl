@@ -28,6 +28,10 @@ end
     @test_inferred Baselet.flatten(((Val(1), Val(2)), (Val(3), Val(4), Val(5))))
 end
 
+@testset "enumerate" begin
+    @test_inferred Val(Baselet.enumerate((Val(1), Val(2), Val(3), Val(4))))
+end
+
 @testset "any" begin
     @test_inferred Val(Baselet.any(valof, (Val(false), Val(false), Val(false))))
     @test_inferred Val(Baselet.any(valof, (Val(false), Val(false), Val(true))))
