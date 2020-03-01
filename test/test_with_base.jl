@@ -21,6 +21,7 @@ accumulate(+, (11, 22, 33)) ===
 accumulate(+, (11, 22, 33); init=100) ===
 cumsum((11, 22, 33)) ===
 cumprod((11, 22, 33)) ===
+enumerate((11, 22, 33)) ==ᶜ
 flatten(((11, 22), (33, 44, 55))) ==ᶜ
 any((false, false, false)) ===
 any((false, true, false)) ===
