@@ -9,6 +9,12 @@ using Test
     if VERSION < v"1.3-" && file == "test_inference.jl"
         @info "Skip $file for Julia $VERSION"
         continue
+    elseif (
+        lowercase(get(ENV, "JULIA_PKGEVAL", "false")) == "true" &&
+        file == "test_inference.jl"
+    )
+        @info "Skip $file on PkgEval."
+        continue
     end
     include(file)
 end
